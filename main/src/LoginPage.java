@@ -1,5 +1,5 @@
 import javax.swing.*;
 
 public class LoginPage {
-    private JLabel titleLable;
+    private JLabel titleLabel;
 }

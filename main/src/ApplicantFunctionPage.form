@@ -10,7 +10,7 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="1ca90" class="javax.swing.JLabel" binding="titleLable">
+      <component id="1ca90" class="javax.swing.JLabel" binding="titleLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="300" height="100"/>
@@ -51,7 +51,7 @@
           <text value="Review Registration Status"/>
         </properties>
       </component>
-      <component id="dd9f9" class="javax.swing.JLabel">
+      <component id="dd9f9" class="javax.swing.JLabel" binding="sectionLabel">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="200" height="50"/>
