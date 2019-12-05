@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="ApplicantFunctionPage">
-  <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="StaffFunctionPage">
+  <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="754" height="448"/>
+      <xy x="20" y="20" width="774" height="400"/>
     </constraints>
-    <properties>
-      <enabled value="true"/>
-    </properties>
+    <properties/>
     <border type="none"/>
     <children>
-      <component id="1ca90" class="javax.swing.JLabel" binding="titleLabel">
+      <component id="9acd5" class="javax.swing.JLabel" binding="titleLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="600" height="50"/>
@@ -26,12 +24,12 @@
           <text value="Passport System"/>
         </properties>
       </component>
-      <vspacer id="fcf04">
+      <vspacer id="e6cbc">
         <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <component id="5aa86" class="javax.swing.JButton" binding="summitPassportRegistrationButton" default-binding="true">
+      <component id="150b5" class="javax.swing.JButton" binding="viewPassportRegistrationButton" default-binding="true">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
             <minimum-size width="600" height="100"/>
@@ -39,30 +37,21 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Summit Passport Registration"/>
+          <text value="View Passport Registration"/>
         </properties>
       </component>
-      <component id="f3708" class="javax.swing.JButton" binding="reviewRegistrationStatusButton" default-binding="true">
+      <component id="1fa5e" class="javax.swing.JButton" binding="viewPassportCollectionButton">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
             <minimum-size width="600" height="100"/>
+            <preferred-size width="213" height="54"/>
           </grid>
         </constraints>
         <properties>
-          <text value="Review Registration Status"/>
+          <text value="View Passport Collection"/>
         </properties>
       </component>
-      <component id="7a9fb" class="javax.swing.JButton" default-binding="true">
-        <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <minimum-size width="600" height="100"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Reserve passport collection"/>
-        </properties>
-      </component>
-      <grid id="80e5c" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="64a0f" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -70,7 +59,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="7f079" class="javax.swing.JLabel" binding="sectionLabel">
+          <component id="ea480" class="javax.swing.JLabel" binding="sectionLabel">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <minimum-size width="600" height="50"/>
@@ -81,10 +70,10 @@
               <enabled value="false"/>
               <font size="16"/>
               <opaque value="false"/>
-              <text value="Applicant Function"/>
+              <text value="Staff Function"/>
             </properties>
           </component>
-          <component id="f9ae6" class="javax.swing.JButton" binding="homeButton">
+          <component id="d3b0c" class="javax.swing.JButton" binding="homeButton">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -92,7 +81,7 @@
               <text value="Home"/>
             </properties>
           </component>
-          <component id="120dc" class="javax.swing.JButton" binding="backButton" default-binding="true">
+          <component id="2edf9" class="javax.swing.JButton" binding="backButton" default-binding="true">
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
