@@ -1,9 +1,9 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
 import java.util.Vector;
 
 
@@ -13,6 +13,13 @@ public class ViewPassportRegistrationPage {
     private JButton homeButton;
     private JButton backButton;
     private JPanel panelMain;
+    private JButton approveButton;
+    private JTextField registrationIDtextField;
+    private JTextField lastNameTextField;
+    private JTextField firstNameTextField;
+    private JButton rejectButton;
+
+    private JTable registrationTable;
 
     private JFrame frame;
 
@@ -39,7 +46,7 @@ public class ViewPassportRegistrationPage {
             e.printStackTrace();
         }
 
-        JTable registrationTable = new JTable(data, columnNames);
+        registrationTable = new JTable(data, columnNames);
 
         JScrollPane scrollPane = new JScrollPane(registrationTable);
 
@@ -50,7 +57,87 @@ public class ViewPassportRegistrationPage {
         frame.pack();
         frame.setVisible(true);
 
+        registrationTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                // get the model from the jtable
+                DefaultTableModel model = (DefaultTableModel)registrationTable.getModel();
 
+                // get the selected row index
+                int selectedRowIndex = registrationTable.getSelectedRow();
+
+                // set the selected row data into jtextfields
+                registrationIDtextField.setText(model.getValueAt(selectedRowIndex, 0).toString());
+                lastNameTextField.setText(model.getValueAt(selectedRowIndex, 1).toString());
+                firstNameTextField.setText(model.getValueAt(selectedRowIndex, 2).toString());
+            }
+        });
+
+        approveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Connection c = SQLiteJDBC.CreateConnection();
+
+                String ID = registrationIDtextField.getText();
+
+                String Query = "UPDATE Registration SET Approved = TRUE where registrationID = " + ID;
+
+                try {
+
+                    PreparedStatement pstmt = c.prepareStatement(Query);
+                    pstmt.executeUpdate();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+
+
+
+                DefaultTableModel model = (DefaultTableModel)registrationTable.getModel();
+
+                model.setValueAt("true", Integer.parseInt(ID)-1, 7);
+
+            }
+        });
+
+        rejectButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Connection c = SQLiteJDBC.CreateConnection();
+
+                String ID = registrationIDtextField.getText();
+
+                String Query = "UPDATE Registration SET Approved = FALSE where registrationID = " + ID;
+
+                try {
+
+                    PreparedStatement pstmt = c.prepareStatement(Query);
+                    pstmt.executeUpdate();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+
+
+
+                DefaultTableModel model = (DefaultTableModel)registrationTable.getModel();
+
+                model.setValueAt("false", Integer.parseInt(ID)-1, 7);
+            }
+        });
+
+        homeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                MainPage page = new MainPage();
+            }
+        });
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                StaffFunctionPage page = new StaffFunctionPage();
+            }
+        });
     }
 
     public Vector getData(String Query) throws SQLException {
@@ -94,6 +181,7 @@ public class ViewPassportRegistrationPage {
             return data;
 
     }
+
 
 
 
