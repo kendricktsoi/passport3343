@@ -8,7 +8,7 @@ public class StaffFunctionPage {
     private JPanel panelMain;
     private JLabel titleLabel;
     private JButton viewPassportRegistrationButton;
-    private JButton viewPassportCollectionButton;
+    private JButton confirmPassportCollectionButton;
     private JLabel sectionLabel;
     private JButton homeButton;
     private JButton backButton;

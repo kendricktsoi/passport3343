@@ -53,7 +53,7 @@ public class ReserveCollectionPage {
 
                 String collectionDate = datePicker.getJFormattedTextField().getText();
 
-                String Query = "INSERT INTO Collection(refCode,collectionDate,collected) VALUES(?,?,?)";
+                String Query = "INSERT INTO Appointment(refCode,collectionDate,collected) VALUES(?,?,?)";
 
                 try {
                     PreparedStatement pstmt = c.prepareStatement(Query);
