@@ -2,6 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class ApplicantFunctionPage {
     private JPanel panelMain;
@@ -45,6 +49,41 @@ public class ApplicantFunctionPage {
             }
         });
 
+        reviewRegistrationStatusButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String refCode= JOptionPane.showInputDialog("Please input your refCode: ");
+
+                Connection c = SQLiteJDBC.CreateConnection();
+                String query = "Select * from Registration where refCode =" + refCode;
+
+                Statement stat = null;
+                try {
+                    stat = c.createStatement();
+                    ResultSet rs = stat.executeQuery(query);
+
+                    if (!rs.next()) {
+                        JOptionPane.showMessageDialog(null, "There are no case for this code: \n" + refCode);
+                    }else{
+                        Boolean approved = rs.getBoolean("approved");
+                        if(approved){
+                            JOptionPane.showMessageDialog(null, "The application is approved for this code: \n" + refCode);
+                        }else{
+                            JOptionPane.showMessageDialog(null, "The application is not approved for this code: \n" + refCode);
+                        }
+                    }
+
+                    c.close();
+                    stat.close();
+                    rs.close();
+
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+
+
+            }
+        });
     }
 
 

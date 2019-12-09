@@ -36,6 +36,7 @@ public class ViewPassportRegistrationPage {
         columnNames.addElement("Telephone");
         columnNames.addElement("Email");
         columnNames.addElement("Approved");
+        columnNames.addElement("Ref. Code");
 
         String query = "Select * from Registration";
         Vector data = new Vector();
@@ -51,7 +52,6 @@ public class ViewPassportRegistrationPage {
         JScrollPane scrollPane = new JScrollPane(registrationTable);
 
         frame.add( panelMain, BorderLayout.NORTH);
-
         frame.add( scrollPane, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
@@ -111,6 +111,9 @@ public class ViewPassportRegistrationPage {
 
                     PreparedStatement pstmt = c.prepareStatement(Query);
                     pstmt.executeUpdate();
+
+                    pstmt.close();
+                    c.close();
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
@@ -160,6 +163,7 @@ public class ViewPassportRegistrationPage {
                 int telephone = rs.getInt("telephone");
                 String email = rs.getString("email");
                 Boolean approved = rs.getBoolean("approved");
+                int code = rs.getInt("refCode");
 
                 record.addElement(registrationID);
                 record.addElement(lastName);
@@ -169,6 +173,7 @@ public class ViewPassportRegistrationPage {
                 record.addElement(telephone);
                 record.addElement(email);
                 record.addElement(approved);
+                record.addElement(code);
 
                 data.addElement(record);
 
