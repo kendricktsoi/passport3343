@@ -1,21 +1,31 @@
+package Main;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class StaffFunctionPage {
-
-    private JPanel panelMain;
+public class LoginPage {
     private JLabel titleLabel;
-    private JButton viewPassportRegistrationButton;
-    private JButton confirmPassportCollectionButton;
+    private JLabel userIDLabel;
+    private JTextField userIDTextField;
+    private JLabel passwordLabel;
+    private JButton resetButton;
+    private JButton summitButton;
     private JLabel sectionLabel;
     private JButton homeButton;
     private JButton backButton;
+    private JPanel panelMain;
+    private JPasswordField passwordTextField;
     private JFrame frame;
 
-    public StaffFunctionPage(){
+    private String inputPage;
 
-        frame = new JFrame("StaffFunctionPage");
+    public LoginPage(String inputPage){
+
+        this.inputPage = inputPage;
+
+
+        frame = new JFrame("LoginPage");
         frame.setContentPane(panelMain);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
@@ -33,28 +43,17 @@ public class StaffFunctionPage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-                LoginPage page = new LoginPage("StaffFunctionPage");
+                MainPage page = new MainPage();
             }
         });
 
-        viewPassportRegistrationButton.addActionListener(new ActionListener() {
+        summitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-                ViewPassportRegistrationPage page = new ViewPassportRegistrationPage();
+                StaffFunctionPage page = new StaffFunctionPage();
             }
         });
-
-        confirmPassportCollectionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
-                ConfirmPassportCollection page = new ConfirmPassportCollection();
-            }
-        });
-
     }
-
-
 
 }
