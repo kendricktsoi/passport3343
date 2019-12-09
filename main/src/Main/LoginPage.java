@@ -3,6 +3,10 @@ package Main;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class LoginPage {
     private JLabel titleLabel;
@@ -50,8 +54,40 @@ public class LoginPage {
         summitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
-                StaffFunctionPage page = new StaffFunctionPage();
+
+                String staffID = userIDTextField.getText();
+                String password = String.valueOf(passwordTextField.getPassword());
+
+                if(staffID.equals("") || password.equals("")){
+                    JOptionPane.showMessageDialog(null, "Please input ID and password");
+                    return;
+                }
+
+                Connection c = SQLiteJDBC.CreateConnection();
+                String query = "Select * from Staff where staffID =" + staffID + " and password = " + password;
+
+                Statement stat = null;
+                try {
+                    stat = c.createStatement();
+                    ResultSet rs = stat.executeQuery(query);
+
+                    if (!rs.next()) {
+                        JOptionPane.showMessageDialog(null, "There are no this staff" );
+                    }else{
+                        frame.setVisible(false);
+                        StaffFunctionPage page = new StaffFunctionPage();
+                    }
+
+                    c.close();
+                    stat.close();
+                    rs.close();
+
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+
+
+
             }
         });
     }

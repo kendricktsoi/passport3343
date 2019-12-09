@@ -98,6 +98,21 @@ public class ConfirmPassportCollection {
             }
         });
 
+        homeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                MainPage page = new MainPage();
+            }
+        });
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                StaffFunctionPage page = new StaffFunctionPage();
+            }
+        });
     }
 
 

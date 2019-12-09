@@ -81,6 +81,22 @@ public class ReserveCollectionPage {
                 datePicker.getJFormattedTextField().setText("");
             }
         });
+
+        homeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                MainPage page = new MainPage();
+            }
+        });
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                ApplicantFunctionPage page = new ApplicantFunctionPage();
+            }
+        });
     }
 
     public void initDatePicker(){
