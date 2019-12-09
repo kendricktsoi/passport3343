@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Objects;
 
 public class ApplicantFunctionPage {
     private JPanel panelMain;
@@ -15,6 +16,7 @@ public class ApplicantFunctionPage {
     private JLabel sectionLabel;
     private JButton homeButton;
     private JButton backButton;
+    private JButton reservePassportCollectionButton;
     private JFrame frame;
 
     public ApplicantFunctionPage(){
@@ -52,7 +54,18 @@ public class ApplicantFunctionPage {
         reviewRegistrationStatusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String refCode= JOptionPane.showInputDialog("Please input your refCode: ");
+                String refCode = "000000";
+
+                refCode= JOptionPane.showInputDialog("Please input your refCode: ");
+
+                if(refCode == null){
+                    return;
+                }
+
+                if(Objects.equals(refCode, "")){
+                    JOptionPane.showMessageDialog(null, "You input nothing");
+                    return;
+                }
 
                 Connection c = SQLiteJDBC.CreateConnection();
                 String query = "Select * from Registration where refCode =" + refCode;
@@ -84,6 +97,56 @@ public class ApplicantFunctionPage {
 
             }
         });
+
+        reservePassportCollectionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String refCode = "000000";
+
+                refCode= JOptionPane.showInputDialog("Please input your refCode: ");
+
+                if(refCode == null){
+                    return;
+                }
+
+                if(Objects.equals(refCode, "")){
+                    JOptionPane.showMessageDialog(null, "You input nothing");
+                    return;
+                }
+
+                Connection c = SQLiteJDBC.CreateConnection();
+                String query = "Select * from Registration where refCode =" + refCode;
+
+                Statement stat = null;
+                try {
+                    stat = c.createStatement();
+                    ResultSet rs = stat.executeQuery(query);
+
+                    if (!rs.next()) {
+                        JOptionPane.showMessageDialog(null, "There are no case for this code: \n" + refCode);
+                    }else{
+                        Boolean approved = rs.getBoolean("approved");
+                        if(!approved){
+                            JOptionPane.showMessageDialog(null, "The application is approved for this code: \n" + refCode);
+                        }else{
+                            frame.setVisible(false);
+                            ReserveCollectionPage page = new ReserveCollectionPage(refCode);
+                        }
+                    }
+
+                    c.close();
+                    stat.close();
+                    rs.close();
+
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+
+
+            }
+        });
+
     }
 
 

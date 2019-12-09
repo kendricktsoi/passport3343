@@ -7,7 +7,6 @@ public class LoginPage {
     private JLabel titleLabel;
     private JLabel userIDLabel;
     private JTextField userIDTextField;
-    private JTextField passwordTextField;
     private JLabel passwordLabel;
     private JButton resetButton;
     private JButton summitButton;
@@ -15,6 +14,7 @@ public class LoginPage {
     private JButton homeButton;
     private JButton backButton;
     private JPanel panelMain;
+    private JPasswordField passwordTextField;
     private JFrame frame;
 
     private String inputPage;

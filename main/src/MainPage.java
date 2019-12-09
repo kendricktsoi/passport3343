@@ -1,3 +1,5 @@
+import org.jdatepicker.JDatePicker;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,6 +20,7 @@ public class MainPage {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
 
         iAmApplicantButton.addActionListener(new ActionListener() {
             @Override
