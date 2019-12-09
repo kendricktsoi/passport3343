@@ -3,6 +3,9 @@
     <output-path>$PROJECT_DIR$/out/artifacts/main_jar</output-path>
     <root id="archive" name="main.jar">
       <element id="module-output" name="main" />
+      <element id="module-output" name="passport3343" />
+      <element id="library" level="project" name="jdatepicker-1.3.4" />
+      <element id="library" level="project" name="sqlite-jdbc-3.27.2" />
     </root>
   </artifact>
 </component>
