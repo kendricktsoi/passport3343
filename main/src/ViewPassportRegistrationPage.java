@@ -85,6 +85,10 @@ public class ViewPassportRegistrationPage {
 
                     PreparedStatement pstmt = c.prepareStatement(Query);
                     pstmt.executeUpdate();
+
+                    pstmt.close();
+                    c.close();
+
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
